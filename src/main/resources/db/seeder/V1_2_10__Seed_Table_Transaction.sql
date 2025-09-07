@@ -1,0 +1,2 @@
+INSERT INTO "transactions" ("user_id", "invoice_num", "product_id", "payment_id", "address_id", "expedition_id", "qty", "created_by", "created_at", "total", "status") VALUES 
+    (1, 'ABC123', 1, 1, 1, 1, 10, 1, '2025-09-04 20:11:10', 10000, 'WAITING_PAYMENT');

@@ -1,0 +1,18 @@
+INSERT INTO "menu"  ("title", "icon", "to", "parent") VALUES 
+    ('New', 'mdi-new-box', '/new', NULL),
+    ('Promo', 'mdi-percent-box', '/promo', NULL),
+    ('Product', 'mdi-store', '/product', NULL),
+    ('Checkout', 'mdi-basket-check', '/checkout', NULL),
+    ('Expedition', 'mdi-truck-cargo-container', '/expedition', NULL),
+    ('My Transaction', 'mdi-store-check', '/my-transaction', 4),
+    ('Profile', 'mdi-account-circle', NULL, NULL),
+    ('Chart', 'mdi-cart', '/chart', 4),
+    ('Admin', 'mdi-security', NULL, NULL),
+    ('My Profile', 'mdi-account-circle', '/my-profile', 4),
+    ('User Management', 'mdi-account-circle', '/user', 9),
+    ('Product Management', 'mdi-store-plus', '/product-management', 9),
+    ('Transaction History', 'mdi-store-check', '/transaction-history', 9),
+    ('Payment Management', 'mdi-cash', '/payment-management', 9),
+    ('Category Management', 'mdi-shape-plus', '/category-management', 9),
+    ('Role Management', 'mdi-account-cog', '/role-management', 9),
+    ('Expedition Management', 'mdi-truck-cargo-container', '/expedition-management', 9);

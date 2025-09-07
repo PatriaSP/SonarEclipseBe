@@ -1,0 +1,2 @@
+INSERT INTO "users" ("username", "email", "first_name", "last_name", "phone", "role_id", "last_login_at", "created_by", "created_at", "updated_by", "updated_at", "deleted_by", "deleted_at", "country", "password", "is_active") VALUES 
+    ('pangga809', 'pangga809@gmail.com', 'Patria Satridwi', 'Pangga', '6285217251961', 1, '2025-07-25', 0, '2025-07-25', NULL, NULL, NULL, NULL, 'IDN', '$2a$10$yT2k9VhTkWCZiVjWQogTK.tPf3cArcE7i7fJoh3GonLIC/p3HzdVG',true);

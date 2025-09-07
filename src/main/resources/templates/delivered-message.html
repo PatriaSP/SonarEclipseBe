@@ -1,0 +1,111 @@
+<!doctype html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+  <meta charset="utf-8"/>
+  <title>Delivery Confirmed - Invoice [[${invoiceNum}]]</title>
+</head>
+<body style="margin:0;padding:0;font-family:Arial,Helvetica,sans-serif;background-color:#f6f6f6;color:#222;">
+
+  <table align="center" cellpadding="0" cellspacing="0" border="0" width="100%" style="padding:20px 0;">
+    <tr>
+      <td align="center">
+        <table cellpadding="0" cellspacing="0" border="0" width="600" style="background:#ffffff;border-radius:8px;padding:20px;">
+          
+          <!-- Header -->
+          <tr>
+            <td style="font-size:20px;font-weight:bold;color:#2b6cb0;">Sonar Eclipse</td>
+            <td align="right">
+              <span style="background:#e6ffed;color:#227a3c;padding:6px 10px;border-radius:6px;font-weight:600;">Delivered</span>
+            </td>
+          </tr>
+          <tr>
+            <td colspan="2" style="font-size:13px;color:#666;padding-top:4px;">Delivery confirmation</td>
+          </tr>
+
+          <!-- Recipient -->
+          <tr>
+            <td colspan="2" style="padding-top:20px;">
+              <h2 th:text="${name}" style="margin:0;font-size:18px;font-weight:bold;">Recipient Name</h2>
+              <p style="margin:4px 0;font-size:13px;color:#444;">
+                Invoice: <strong th:text="${invoiceNum}">INV-0001</strong> &nbsp;•&nbsp;
+                <span th:text="${#temporals.format(date, 'dd MMM yyyy')}">01 Jan 2025</span>
+              </p>
+            </td>
+          </tr>
+
+          <!-- Items -->
+          <tr>
+            <td colspan="2" style="padding-top:15px;border-top:1px solid #eee;">
+              <h4 style="margin:8px 0;font-size:15px;">Items</h4>
+              <table cellpadding="0" cellspacing="0" border="0" width="100%" style="border-collapse:collapse;">
+                <thead>
+                  <tr>
+                    <th align="left" style="font-size:13px;color:#555;padding:8px 6px;">Product</th>
+                    <th align="right" style="font-size:13px;color:#555;padding:8px 6px;">Qty</th>
+                    <th align="right" style="font-size:13px;color:#555;padding:8px 6px;">Price</th>
+                    <th align="right" style="font-size:13px;color:#555;padding:8px 6px;">Subtotal</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr th:each="p : ${product}">
+                    <td style="padding:8px 6px;border-top:1px solid #f6f6f6;" th:text="${p.name}">Product name</td>
+                    <td align="right" style="padding:8px 6px;border-top:1px solid #f6f6f6;" th:text="${p.qty}">1</td>
+                    <td align="right" style="padding:8px 6px;border-top:1px solid #f6f6f6;" th:text="${p.price}">10.00</td>
+                    <td align="right" style="padding:8px 6px;border-top:1px solid #f6f6f6;" th:text="${p.price * p.qty}">10.00</td>
+                  </tr>
+                  <tr th:if="${product == null or #lists.isEmpty(product)}">
+                    <td colspan="4" style="padding:8px 6px;font-size:13px;color:#666;border-top:1px solid #f6f6f6;">No products listed.</td>
+                  </tr>
+                </tbody>
+                <tfoot>
+                  <tr>
+                    <td colspan="3" align="right" style="padding:8px 6px;border-top:1px solid #f6f6f6;">Shipping</td>
+                    <td align="right" style="padding:8px 6px;border-top:1px solid #f6f6f6;" th:text="${#strings.isEmpty(expedition) ? '—' : expedition}">JNE Regular</td>
+                  </tr>
+                  <tr>
+                    <td colspan="3" align="right" style="padding:8px 6px;font-weight:bold;border-top:1px solid #f6f6f6;">Total</td>
+                    <td align="right" style="padding:8px 6px;font-weight:bold;border-top:1px solid #f6f6f6;" th:text="${total}">100.00</td>
+                  </tr>
+                </tfoot>
+              </table>
+            </td>
+          </tr>
+
+          <!-- Notes -->
+          <tr>
+            <td colspan="2" style="padding-top:15px;border-top:1px solid #eee;">
+              <h4 style="margin:8px 0;font-size:15px;">Details / Notes</h4>
+              <p th:text="${detail}" style="font-size:13px;color:#666;margin:0;">Left at front door.</p>
+            </td>
+          </tr>
+
+          <!-- Delivery Info -->
+          <tr>
+            <td colspan="2" style="padding-top:15px;border-top:1px solid #eee;">
+              <h4 style="margin:8px 0;font-size:15px;">Delivery Info</h4>
+              <p style="margin:4px 0;font-size:13px;color:#444;">
+                <strong>Expedition:</strong> <span th:text="${expedition}">Courier Name</span>
+              </p>
+              <p style="margin:4px 0;font-size:13px;color:#444;">
+                <strong>Delivered At:</strong>
+                <span th:text="${#temporals.format(date, 'dd MMM yyyy HH:mm')}" th:unless="${date == null}">01 Jan 2025 14:30</span>
+              </p>
+            </td>
+          </tr>
+
+          <!-- Address -->
+          <tr>
+            <td colspan="2" style="padding-top:15px;border-top:1px solid #eee;">
+              <h4 style="margin:8px 0;font-size:15px;">Shipping Address</h4>
+              <pre th:text="${address}" style="font-size:13px;color:#444;background:#fafafa;padding:10px;border-radius:6px;margin:0;white-space:pre-line;">123 Example St.
+City, Country</pre>
+            </td>
+          </tr>
+
+        </table>
+      </td>
+    </tr>
+  </table>
+
+</body>
+</html>

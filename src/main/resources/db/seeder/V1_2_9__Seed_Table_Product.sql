@@ -1,0 +1,3 @@
+INSERT INTO "product" ("name", "category_id", "price", "image", "stock", "created_by", "created_at", "updated_by", "updated_at", "deleted_by", "deleted_at", "is_active") VALUES 
+    ('Playstation 5', 2, 150.00, 'electronics/playstation5', 20, 0, '2025-09-04 20:05:17', NULL, NULL, NULL, NULL, 't'),
+    ('Xbox Series X', 2, 120.00, 'electrinics/xbox', 100, 0, '2025-09-04 20:05:17', NULL, NULL, NULL, NULL, 't');

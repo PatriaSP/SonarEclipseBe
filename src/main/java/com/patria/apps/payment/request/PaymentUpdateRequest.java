@@ -1,0 +1,25 @@
+package com.patria.apps.payment.request;
+
+import com.fasterxml.jackson.annotation.JsonInclude;
+import io.swagger.v3.oas.annotations.media.Schema;
+import jakarta.validation.constraints.NotEmpty;
+import lombok.AllArgsConstructor;
+import lombok.Builder;
+import lombok.Data;
+import lombok.NoArgsConstructor;
+
+@AllArgsConstructor
+@NoArgsConstructor
+@Data
+@Builder
+@JsonInclude(JsonInclude.Include.NON_NULL)
+@Schema(title = "Payment Update Request")
+public class PaymentUpdateRequest {
+
+    @NotEmpty
+    private String key;
+    
+    @NotEmpty
+    private String method;
+
+}

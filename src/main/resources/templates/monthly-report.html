@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+  <meta charset="UTF-8" />
+  <title>Monthly Report</title>
+  <style>
+    body { font-family: Arial, Helvetica, sans-serif; margin: 0; padding: 20px; background: #f6f8fa; color: #333; }
+    .container { max-width: 900px; margin: auto; background: #fff; border-radius: 8px; box-shadow: 0 3px 12px rgba(0,0,0,0.08); padding: 20px; }
+    h1 { font-size: 20px; color: #2b6cb0; margin-bottom: 8px; }
+    .meta { font-size: 0.9rem; color: #666; margin-bottom: 20px; }
+    table { width: 100%; border-collapse: collapse; margin-bottom: 20px; }
+    th, td { padding: 10px 8px; border-bottom: 1px solid #eee; text-align: left; font-size: 14px; }
+    th { background: #f0f4f8; font-weight: 600; color: #444; }
+    td.right, th.right { text-align: right; }
+    tfoot td { font-weight: bold; border-top: 2px solid #ddd; }
+    .total { font-size: 1rem; color: #222; }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h1>📊 Sonar Eclipse Monthly Report</h1>
+    <div class="meta">
+      Report Date: <span th:text="${#temporals.format(date, 'MMMM yyyy')}">September 2025</span>
+    </div>
+
+    <table>
+      <thead>
+        <tr>
+          <th>Product Name</th>
+          <th class="right">Remaining Stock</th>
+          <th class="right">Stock Sold</th>
+          <th class="right">Revenue</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr th:each="item : ${products}">
+          <td th:text="${item.productName}">Example Product</td>
+          <td class="right" th:text="${item.remainingStock}">120</td>
+          <td class="right" th:text="${item.stockSelled}">30</td>
+          <td class="right" th:text="${item.revenue}">3000</td>
+        </tr>
+        <tr th:if="${products == null or #lists.isEmpty(products)}">
+          <td colspan="4" style="text-align:center; font-style:italic; color:#888;">No product data available</td>
+        </tr>
+      </tbody>
+      <tfoot>
+        <tr>
+          <td colspan="2" class="right total">Total</td>
+          <td class="right total" th:text="${total}">150</td>
+          <td class="right total" th:text="${totalRevenue}">150</td>
+        </tr>
+      </tfoot>
+    </table>
+
+    <p style="font-size:0.9rem; color:#666;">This is an automated monthly stock and revenue report.</p>
+  </div>
+</body>
+</html>

@@ -1,0 +1,2 @@
+INSERT INTO "product_review" ("review", "user_id", "transactions_id", "product_id", "score", "created_by", "created_at", "updated_by", "updated_at", "deleted_by", "deleted_at")  VALUES 
+    ('Very very gooooood', 1, 1, 1, 5, 0, '2025-09-04 20:05:17', NULL, NULL, NULL, NULL);
