@@ -15,7 +15,7 @@ Before running the project, make sure you have the following installed:
 
 ## Environment Variables
 
-## Rename the `.env_example` file to `.env_docker`:
+## Rename the `.env_example` file to `.env`:
 
 ```bash
 cp .env_example .env_docker
