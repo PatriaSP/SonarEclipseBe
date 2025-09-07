@@ -56,13 +56,14 @@ public class TransactionsSchedulerService {
 
             //Email
             Map<String, Object> dataMail = new HashMap<>();
-            dataMail.put("name", data.getUsers().getFirstName());
+            dataMail.put("name", data.getUsers().getFirstName() + " " + data.getUsers().getLastName());
             dataMail.put("invoiceNum", data.getInvoiceNum());
-            dataMail.put("detail", "Delivered to reception. Signed by: " + data.getUsers().getFirstName());
+            dataMail.put("detail", "Delivered to reception. Signed by: " + data.getUsers().getFirstName() + " " + data.getUsers().getLastName());
             dataMail.put("date", LocalDateTime.now());
             dataMail.put("total", new BigDecimal(data.getTotal()));
             dataMail.put("expedition", data.getExpedition().getExpeditionName());
             dataMail.put("address", data.getUsersAddress().getAddress());
+            dataMail.put("productName", data.getProduct().getName());
             dataMail.put("price", new BigDecimal(data.getProduct().getPrice()));
             dataMail.put("qty", new BigDecimal(data.getQty()));
 

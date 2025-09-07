@@ -47,14 +47,11 @@
                   </tr>
                 </thead>
                 <tbody>
-                  <tr th:each="p : ${product}">
-                    <td style="padding:8px 6px;border-top:1px solid #f6f6f6;" th:text="${p.name}">Product name</td>
-                    <td align="right" style="padding:8px 6px;border-top:1px solid #f6f6f6;" th:text="${p.qty}">1</td>
-                    <td align="right" style="padding:8px 6px;border-top:1px solid #f6f6f6;" th:text="${p.price}">10.00</td>
-                    <td align="right" style="padding:8px 6px;border-top:1px solid #f6f6f6;" th:text="${p.price * p.qty}">10.00</td>
-                  </tr>
-                  <tr th:if="${product == null or #lists.isEmpty(product)}">
-                    <td colspan="4" style="padding:8px 6px;font-size:13px;color:#666;border-top:1px solid #f6f6f6;">No products listed.</td>
+                  <tr>
+                    <td style="padding:8px 6px;border-top:1px solid #f6f6f6;" th:text="${productName}">Product name</td>
+                    <td align="right" style="padding:8px 6px;border-top:1px solid #f6f6f6;" th:text="${qty}">1</td>
+                    <td align="right" style="padding:8px 6px;border-top:1px solid #f6f6f6;" th:text="${price}">10.00</td>
+                    <td align="right" style="padding:8px 6px;border-top:1px solid #f6f6f6;" th:text="${price * qty}">10.00</td>
                   </tr>
                 </tbody>
                 <tfoot>
