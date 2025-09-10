@@ -17,4 +17,6 @@ public interface BasketService {
     ReadResponse destroyBasket(BasketDestroyRequest request);
     
     ReadResponse updateBasket(BasketUpdateRequest request);
+
+    ReadResponse<BasketListResponse> retrieveSingleData(String id);
 }

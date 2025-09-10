@@ -90,10 +90,7 @@ public class UsersController {
     public ReadResponse<UsersResponse> retrieveSingleData(
             @PathVariable String id
     ) {
-        UserRetrieveRequest request = UserRetrieveRequest.builder()
-                .build();
-
-        return usersService.retrieveSingleData(id, request);
+        return usersService.retrieveSingleData(id);
     }
 
     @DeleteMapping(consumes = MediaType.APPLICATION_JSON_VALUE, produces = MediaType.APPLICATION_JSON_VALUE)

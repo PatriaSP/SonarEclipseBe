@@ -180,4 +180,19 @@ public class BasketServiceImpl implements BasketService {
         );
     }
 
+    @Override
+    public ReadResponse<BasketListResponse> retrieveSingleData(String id) {
+        
+        if(id.isBlank()){
+            throw new GeneralException(HttpStatus.INTERNAL_SERVER_ERROR, "Id is not found");
+        }
+        
+        Long decryptedId = aesService.getDecryptedString(id);
+
+        Basket basket = basketRepository.findById(decryptedId).orElseThrow(
+                () -> new GeneralException(HttpStatus.NOT_FOUND, "Data Not Found")
+        );
+        return basketSerializerService.serializeRetrieve(basket);
+    }
+
 }

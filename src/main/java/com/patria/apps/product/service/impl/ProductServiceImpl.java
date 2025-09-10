@@ -229,4 +229,19 @@ public class ProductServiceImpl implements ProductService {
         );
     }
 
+    @Override
+    public ReadResponse<ProductListResponse> retrieveSingleData(String id) {
+        
+        if(id.isBlank()){
+            throw new GeneralException(HttpStatus.INTERNAL_SERVER_ERROR, "Id is not found");
+        }
+        
+        Long decryptedId = aesService.getDecryptedString(id);
+
+        Product product = productRepository.findById(decryptedId).orElseThrow(
+                () -> new GeneralException(HttpStatus.NOT_FOUND, "Data Not Found")
+        );
+        return productSerializerService.serializeRetrieve(product);
+    }
+
 }

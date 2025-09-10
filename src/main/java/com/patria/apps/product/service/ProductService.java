@@ -24,4 +24,6 @@ public interface ProductService {
 
     ReadResponse updateProduct(ProductUpdateRequest request);
 
+    ReadResponse<ProductListResponse> retrieveSingleData(String id);
+
 }

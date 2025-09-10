@@ -40,5 +40,15 @@ public class BasketSerializerService {
                 .message(message)
                 .build();
     }
+
+    public ReadResponse<BasketListResponse> serializeRetrieve(Basket basket) {
+        BasketListResponse basketResponse = this.serialize(
+                basket
+        );
+        return ReadResponse.<BasketListResponse>builder()
+                .status(HttpStatus.OK.value())
+                .data(basketResponse)
+                .build();
+    }
     
 }

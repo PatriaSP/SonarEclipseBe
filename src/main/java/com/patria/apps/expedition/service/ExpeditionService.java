@@ -24,4 +24,6 @@ public interface ExpeditionService {
 
     ReadResponse updateExpedition(ExpeditionUpdateRequest request);
 
+    ReadResponse<ExpeditionListResponse> retrieveSingleData(String id);
+
 }

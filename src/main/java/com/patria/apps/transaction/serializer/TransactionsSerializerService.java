@@ -67,4 +67,14 @@ public class TransactionsSerializerService {
                 .build();
     }
 
+    public ReadResponse<TransactionsListResponse> serializeRetrieve(Transactions transactions) {
+        TransactionsListResponse transactionsResponse = this.serialize(
+                transactions
+        );
+        return ReadResponse.<TransactionsListResponse>builder()
+                .status(HttpStatus.OK.value())
+                .data(transactionsResponse)
+                .build();
+    }
+
 }

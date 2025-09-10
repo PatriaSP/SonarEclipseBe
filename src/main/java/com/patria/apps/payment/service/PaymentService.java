@@ -24,4 +24,6 @@ public interface PaymentService {
 
     ReadResponse updatePayment(PaymentUpdateRequest request);
 
+    ReadResponse<PaymentListResponse> retrieveSingleData(String id);
+
 }

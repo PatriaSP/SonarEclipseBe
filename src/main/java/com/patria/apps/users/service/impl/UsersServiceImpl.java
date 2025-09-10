@@ -210,15 +210,18 @@ public class UsersServiceImpl implements UsersService, UserDetailsService {
     }
 
     @Override
-    public ReadResponse<UsersResponse> retrieveSingleData(String id, UserRetrieveRequest request) {
-        validationHelperService.validate(request);
-
+    public ReadResponse<UsersResponse> retrieveSingleData(String id) {
+        
+        if (id.isBlank()) {
+            throw new GeneralException(HttpStatus.INTERNAL_SERVER_ERROR, "Id is not found");
+        }
+        
         Long decryptedId = aesService.getDecryptedString(id);
 
         Users user = userRepository.findById(decryptedId).orElseThrow(
                 () -> new GeneralException(HttpStatus.NOT_FOUND, "Data Not Found")
         );
-        return usersSerializerService.serializeRetrieve(user, request);
+        return usersSerializerService.serializeRetrieve(user);
     }
 
     @Override

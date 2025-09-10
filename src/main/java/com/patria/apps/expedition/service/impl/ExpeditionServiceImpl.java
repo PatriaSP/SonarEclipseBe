@@ -186,4 +186,19 @@ public class ExpeditionServiceImpl implements ExpeditionService {
         );
     }
 
+    @Override
+    public ReadResponse<ExpeditionListResponse> retrieveSingleData(String id) {
+        
+        if(id.isBlank()){
+            throw new GeneralException(HttpStatus.INTERNAL_SERVER_ERROR, "Id is not found");
+        }
+        
+        Long decryptedId = aesService.getDecryptedString(id);
+
+        Expedition expedition = expeditionRepository.findById(decryptedId).orElseThrow(
+                () -> new GeneralException(HttpStatus.NOT_FOUND, "Data Not Found")
+        );
+        return expeditionSerializerService.serializeRetrieve(expedition);
+    }
+
 }

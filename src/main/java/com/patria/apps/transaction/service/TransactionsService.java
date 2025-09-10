@@ -29,4 +29,6 @@ public interface TransactionsService {
     ReadResponse productReview(TransactionsProductReviewRequest request);
 
     ReadResponse updateProductReview(TransactionsUpdateProductReviewRequest request);
+
+    ReadResponse<TransactionsListResponse> retrieveSingleData(String id);
 }

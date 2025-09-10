@@ -338,4 +338,20 @@ public class TransactionsServiceImpl implements TransactionsService {
         );
     }
 
+    @Override
+    public ReadResponse<TransactionsListResponse> retrieveSingleData(String id) {
+        
+        if(id.isBlank()){
+            throw new GeneralException(HttpStatus.INTERNAL_SERVER_ERROR, "Id is not found");
+        }
+        
+        Long decryptedId = aesService.getDecryptedString(id);
+
+        Transactions transactions = transactionsRepository.findById(decryptedId).orElseThrow(
+                () -> new GeneralException(HttpStatus.NOT_FOUND, "Data Not Found")
+        );
+        return transactionsSerializerService.serializeRetrieve(transactions);
+        
+    }
+
 }

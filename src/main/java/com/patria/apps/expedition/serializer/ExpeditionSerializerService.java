@@ -39,5 +39,15 @@ public class ExpeditionSerializerService {
                 .message(message)
                 .build();
     }
+
+    public ReadResponse<ExpeditionListResponse> serializeRetrieve(Expedition expedition) {
+        ExpeditionListResponse expeditionResponse = this.serialize(
+                expedition
+        );
+        return ReadResponse.<ExpeditionListResponse>builder()
+                .status(HttpStatus.OK.value())
+                .data(expeditionResponse)
+                .build();
+    }
     
 }

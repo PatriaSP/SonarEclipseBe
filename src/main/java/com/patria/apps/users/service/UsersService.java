@@ -31,7 +31,7 @@ public interface UsersService {
 
     ReadResponse destroy(UserDestroyRequest request);
 
-    ReadResponse<UsersResponse> retrieveSingleData(String id, UserRetrieveRequest request);
+    ReadResponse<UsersResponse> retrieveSingleData(String id);
 
     ReadResponse update(HttpServletRequest servletRequest, UserUpdateRequest request, Users updatedBy);
 

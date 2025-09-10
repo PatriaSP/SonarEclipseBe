@@ -38,5 +38,15 @@ public class PaymentSerializerService {
                 .message(message)
                 .build();
     }
+
+    public ReadResponse<PaymentListResponse> serializeRetrieve(Payment payment) {
+        PaymentListResponse paymentResponse = this.serialize(
+                payment
+        );
+        return ReadResponse.<PaymentListResponse>builder()
+                .status(HttpStatus.OK.value())
+                .data(paymentResponse)
+                .build();
+    }
     
 }

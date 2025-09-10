@@ -83,7 +83,7 @@ public class UsersSerializerService {
         }
     }
 
-    public ReadResponse<UsersResponse> serializeRetrieve(Users user, UserRetrieveRequest request) {
+    public ReadResponse<UsersResponse> serializeRetrieve(Users user) {
         UsersResponse userResponse = this.serialize(
                 user
         );

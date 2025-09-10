@@ -60,5 +60,15 @@ public class ProductSerializerService {
                 .message(message)
                 .build();
     }
+
+    public ReadResponse<ProductListResponse> serializeRetrieve(Product product) {
+        ProductListResponse productResponse = this.serialize(
+                product
+        );
+        return ReadResponse.<ProductListResponse>builder()
+                .status(HttpStatus.OK.value())
+                .data(productResponse)
+                .build();
+    }
     
 }
